@@ -1,6 +1,6 @@
 import express from "express";
 import config from "./config";
-import Routes from './routes'
+import Routes from './routes';
 const app = express();
 //Settings
 app.set('port', config.port)

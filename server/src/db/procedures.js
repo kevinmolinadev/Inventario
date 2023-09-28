@@ -8,7 +8,8 @@ export const procedures = {
     //User
     getAllUsers: 'exec GetAllUsers',
     getUser: 'exec GetUser @id=@id_user',
-    insertUser:'exec InsertUser @nombre=, @apellido=, @clave=;',
+    getUserByName: 'exec GetUserName @name=@name;',
+    insertUser:'exec InsertUser @nombre=@nombre, @apellido=@apellido, @clave=@clave;',
     //Registro
     insertRegistro:''
 }

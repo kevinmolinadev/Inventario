@@ -1,5 +1,5 @@
-import Products from './products.routes';
-import Users from './users.router';
+import Products from './products';
+import Users from './users';
 const Routes = {
     Products,
     Users
