@@ -3,23 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import Form from '../components/form'
 import Input from '../components/input';
 import Button from '../components/button';
-const Login = ({ handle}) => {
+import { getUser } from '../api/users';
+const Login = ({ handle }) => {
     const navigate = useNavigate();
-    const [nombre, setNombre] = useState('');
-    const [existencia, setExistencia] = useState(0);
-    const [img, setImg] = useState('');
-    const [price, setPrice] = useState(0);
-    const sendForm = (e) => {
+    const [usuario, setUsuario] = useState('');
+    const [clave, setClave] = useState('');
+    const sendForm = async (e) => {
         e.preventDefault();
-        const product = {
-            nombre,
-            existencia: Number(existencia),
-            img,
-            precio: Number(price)
-        };
-        console.log(product);
-        handle(true);
-        navigate("/dashboard");
+        try {
+            const user = await getUser(usuario);
+            if (user.clave === clave) {
+                handle(true)
+                navigate("/dashboard");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("usuario o contraseña incorrecto")
+        }
     }
     return (
         <section className="h-screen flex">
@@ -29,11 +29,9 @@ const Login = ({ handle}) => {
             <div className='flex-grow self-center' >
                 <Form event={sendForm}>
                     <p className="font-prata text-xl font-medium text-center mb-4 md:text-2xl lg:text-3xl">Inicio de sesion</p>
-                    <Input title="Nombre" placeholder="Ingrese su nombre" value={nombre} event={setNombre} />
-                    <Input title="Existencia" placeholder="Ingrese la cantidad de productos existentes" type="number" value={existencia} event={setExistencia} />
-                    <Input title="Imagen" placeholder="Ingrese la url del producto" type="url" value={img} event={setImg} />
-                    <Input title="Precio" placeholder="Ingrese el precio del producto" type="number" value={price} event={setPrice} />
-                    <Button title="Crear Producto" />
+                    <Input title="Usuario" placeholder="Ingrese su usuario" value={usuario} event={setUsuario} />
+                    <Input title="Contraseña" placeholder="Ingrese su contraseña" type="password" value={clave} event={setClave} />
+                    <Button title="Iniciar sesion" />
                 </Form>
             </div>
         </section>
