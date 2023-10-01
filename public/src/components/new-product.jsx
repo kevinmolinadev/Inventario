@@ -1,27 +1,35 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { newProduct } from "../api/products";
 import Form from "./form";
 import Input from "./input";
 import Button from "./button";
-const NewProduct = () => {
+const NewProduct = ({ handle, value }) => {
+    const navigate = useNavigate();
     const [nombre, setNombre] = useState('');
+    const [codigo, setCodigo] = useState('');
     const [existencia, setExistencia] = useState(0);
     const [img, setImg] = useState('');
     const [price, setPrice] = useState(0);
-    const sendForm = (e) => {
+    const sendForm = async (e) => {
         e.preventDefault();
         const product = {
             nombre,
+            codigo_producto: codigo.toUpperCase(),
             existencia: Number(existencia),
             img,
-            precio: Number(price)
+            precio: price
         };
-        console.log(product);
+        await newProduct(product);
+        navigate("/dashboard/products");
+        handle(!value);
     }
     return (
 
-        < Form event={sendForm} >
+        < Form className="bg-transparent m-auto" event={sendForm} >
             <p className="text-3xl text-center font-semibold pb-4">Agregar nuevo producto</p>
             <Input title="Nombre" placeholder="Ingrese el nombre del producto" value={nombre} event={setNombre} />
+            <Input title="Codigo" placeholder="Ingrese el codigo del producto" value={codigo} event={setCodigo} />
             <Input title="Existencia" placeholder="Ingrese la cantidad de productos existentes" type="number" value={existencia} event={setExistencia} />
             <Input title="Imagen" placeholder="Ingrese la url del producto" type="url" value={img} event={setImg} />
             <Input title="Precio" placeholder="Ingrese el precio del producto" type="number" value={price} event={setPrice} />
