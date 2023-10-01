@@ -11,5 +11,6 @@ export const procedures = {
     getUserByName: 'exec GetUserName @name=@name;',
     insertUser:'exec InsertUser @nombre=@nombre, @apellido=@apellido, @clave=@clave;',
     //Registro
-    insertRegistro:''
+    getAllRecords:'exec GetAllRecords',
+    insertRegistro:'exec InsertRegistro @date, @product_id, @count, @price,@user_id'
 }

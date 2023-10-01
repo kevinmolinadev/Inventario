@@ -76,7 +76,7 @@ export const deleteProduct = async (req, res) => {
         const result = await connection.request()
             .input('codigo_producto', SQL.VarChar, code)
             .query(procedures.deleteProductByCode);
-        res.json(result);
+        res.json(`El producto con codigo ${code} fue eliminado`);
     } catch (error) {
         res.status(500).json({ msg: "Estoy cansado jefe" })
         res.send(error.message);

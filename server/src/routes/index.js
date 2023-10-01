@@ -1,7 +1,9 @@
 import Products from './products';
 import Users from './users';
+import Records from './records'
 const Routes = {
     Products,
-    Users
+    Users,
+    Records
 }
 export default Routes;
