@@ -12,18 +12,20 @@ const SalesHistory = () => {
             <p className="text-lg pt-2 lg:text-2xl text-center lg:pt-4">Registro de ventas</p>
             <table>
                 <thead className="text-sm md:text-base">
-                    <th>Vendedor</th>
-                    <th className="hidden md:inline">Fecha de venta</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Total</th>
+                    <tr>
+                        <th>Vendedor</th>
+                        <th className="hidden md:inline">Fecha de venta</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                    </tr>
                 </thead>
                 <tbody className="text-sm md:text-base">
                     {
-                        records.map(item => {
+                        records.map((item,index) => {
                             return (
-                                <tr key={item.id} className="text-center" >
+                                <tr key={index} className="text-center" >
                                     <td>{item.nombre_usuario}</td>
                                     <td className="hidden md:inline">{item.fecha_venta.split('T')[0]}</td>
                                     <td>{item.nombre_producto}</td>

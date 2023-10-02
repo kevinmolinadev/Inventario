@@ -17,16 +17,16 @@ const NewRecord = () => {
     const sendForm = async (e) => {
         e.preventDefault();
         const record = {
-            fecha_venta:new Date().toLocaleDateString().split('/').reverse().map(item=>item<10?`0${item}`:item).join('-'), 
-            producto_id:Number(product.id), 
-            cantidad:Number(cantidad), 
-            precio_unitario:Number(product.precio), 
-            user_id:JSON.parse(sessionStorage.getItem('user')).id
+            fecha_venta: new Date().toLocaleDateString().split('/').reverse().map(item => item < 10 ? `0${item}` : item).join('-'),
+            producto_id: Number(product.id),
+            cantidad: Number(cantidad),
+            precio_unitario: Number(product.precio),
+            user_id: JSON.parse(sessionStorage.getItem('user')).id
         }
         await newRecord(record);
     }
     return product && (
-        < Form className="bg-transparent m-auto" event={sendForm} >
+        < Form className="bg-transparent m-auto shadow-none" event={sendForm} >
             <div>
                 <img className="w-full" src={product.img} alt={product.nombre} />
                 <div className=" flex flex-wrap justify-between lg:text-xl py-4">

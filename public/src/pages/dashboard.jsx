@@ -30,7 +30,7 @@ const Dashboard = ({ isLogin }) => {
                     </div>
                 }
             </section>
-            <section className="md:w-4/5 flex-grow p-4">
+            <section className="relative md:w-4/5 flex-grow p-4">
                 <section className="h-full flex flex-col bg-slate-100/90 rounded-xl">
                     <Routes>
                         <Route path="/products/*" element={<Products />} />
