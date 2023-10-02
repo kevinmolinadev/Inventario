@@ -14,7 +14,7 @@ const SalesHistory = () => {
                 <thead className="text-sm md:text-base">
                     <tr>
                         <th>Vendedor</th>
-                        <th className="hidden md:inline">Fecha de venta</th>
+                        <th className="hidden md:block">Fecha de venta</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
@@ -27,7 +27,7 @@ const SalesHistory = () => {
                             return (
                                 <tr key={index} className="text-center" >
                                     <td>{item.nombre_usuario}</td>
-                                    <td className="hidden md:inline">{item.fecha_venta.split('T')[0]}</td>
+                                    <td className="hidden md:block">{item.fecha_venta.split('T')[0]}</td>
                                     <td>{item.nombre_producto}</td>
                                     <td>{item.cantidad}</td>
                                     <td>{item.precio_unitario}$</td>

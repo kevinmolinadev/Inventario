@@ -37,7 +37,7 @@ const Login = ({ handle }) => {
             await newUser(user);
             saveSesion(user);
             handle(true);
-            navigate("/dashboard");
+            navigate("/dashboard/products");
         } catch (error) {
             console.error(error);
         }
